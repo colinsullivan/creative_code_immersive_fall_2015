@@ -1,0 +1,8 @@
+.mypicture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f0f;
+  /* makes the photos aligned inline, like text. */
+  display: inline-block;
+}

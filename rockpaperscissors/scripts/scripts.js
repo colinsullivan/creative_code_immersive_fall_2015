@@ -3,8 +3,6 @@
  *
  *  @desc       This file contains the main functionality for the rock paper
  *              scissors example.
- *
- *  @author     Colin Sullivan <colin [at] colin-sullivan.net>
  **/
 
 /**
