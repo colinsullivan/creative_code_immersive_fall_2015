@@ -2,6 +2,6 @@ This repository contains Colin's sample code for sharing with students during th
 
 Explanation of individual directories is below:
 
-* `rockpaperscissors/`: During the JavaScript week, we build a rock paper scissors game.  This is the code we wrote in class, refactored which may help with extensibility, should anyone want to use it as a starting point, or simply to understand a different way of doing things.
+* `rockpaperscissors/`: During the JavaScript week, we build a rock paper scissors game.  This implementation focuses on extensibility of the game logic.  Check out `scripts/scripts.js` for the most important bits.
 
 All code MIT licensed unless noted otherwise.

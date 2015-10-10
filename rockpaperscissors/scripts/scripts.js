@@ -1,17 +1,31 @@
 /**
+ *  @file       scripts.js
+ *
+ *  @desc       This file contains the main functionality for the rock paper
+ *              scissors example.
+ *
+ *  @author     Colin Sullivan <colin [at] colin-sullivan.net>
+ **/
+
+/**
+ *  First, lets set up some variables that will not change, I've put their
+ *  names in all uppercase letters to indicate this.
+ **/
+
+/**
  * These are the possible moves that can be played in the game of rock, paper,
  * scissors.
  **/
-var possible_moves =  ["rock", "paper", "scissors"];
+var POSSIBLE_MOVES =  ["rock", "paper", "scissors"];
 
 /**
- * Based on those possible moves, lets set up some rules so we know who
+ * Based on those possible moves, lets set up some RULES so we know who
  * wins or loses.
  **/
-var rules = {
+var RULES = {
   /**
-   * For example, a rock beats scissors but is beaten by paper.  Note how that
-   * is encoded in this JavaScript object.
+   * For example, a rock beats scissors but is beaten by paper.  Note how this
+   * rule is encoded in the JavaScript object below.
    **/
   "rock": {
     "beats": "scissors",
@@ -28,46 +42,56 @@ var rules = {
 };
 
 /**
- * Now to determine a winner, we just need to look up the result in our rules
+ * Now to determine a winner, we just need to look up the result in our RULES
  * above.  In the following example, to see what scissors beats, we use
- * `rules.scissors.beats`, essentially traversing the `rules` object.
+ * `RULES.scissors.beats`, essentially traversing the `RULES` object.
  **/
-console.log("What does scissors beat?  Answer: `rules.scissors.beats`: " + rules.scissors.beats);
+console.log("What does scissors beat?  Answer: `RULES.scissors.beats`: " + RULES.scissors.beats);
 
+
+/**
+ *  This function gets called directly from the HTML code when the "Play"
+ *  button is clicked.  We expect that the user has entered either "rock", 
+ *  "paper" or "scissors" into the text box before clicking "Play".
+ **/
 function play () {
   console.log("play");
   
   /**
-   * First, lets grab the move that the user typed into the box.  Lets use
-   * jQuery to select the element, then call the "val" method to get
-   * the current value of the text box.  The `toLowerCase` just converts the
-   * string to lower case, in case the user typed any uppercase characters.
+   * First, lets grab the text that the user typed into the box to indicate
+   * their move.  Lets use jQuery to select the element, then call the "val"
+   * method to get the current value of the text box.  The `toLowerCase` just
+   * converts the string to lower case, in case the user typed any uppercase
+   * characters.
    **/
   var user_move = $("#user-input").val().toLowerCase();
-
  
   /**
    *  Now, the computer makes its move.  We just choose a random element
-   *  in the `possible_moves` array (see above).
+   *  in the `POSSIBLE_MOVES` array (defined above).
    **/ 
-  var i = Math.floor(Math.random() * 3);
-  var computer_move = possible_moves[i];
+  var i = Math.floor(Math.random() * POSSIBLE_MOVES.length);
+  var computer_move = POSSIBLE_MOVES[i];
 
   console.log("user_move", user_move);
   console.log("computer_move", computer_move);
 
   /**
-   *  Here we will determine the outcome using the rules set up above.
+   *  Here we will determine the outcome using the RULES set up above.
    **/  
   var winner;
 
-  // get the rules for the user's move.  Note we use the brackets syntax here,
-  // if the user_move happens to be "scissors", then this is the same as
-  // rules.scissors or rules["scissors"].
-  var rulesForUsersMove = rules[user_move];
+  /**
+   * get the RULES for the user's move.  Note we use the brackets syntax here,
+   * if the user_move happens to be "scissors", then this is the same as
+   * RULES.scissors or RULES["scissors"].
+   **/
+  var rulesForUsersMove = RULES[user_move];
 
-  // now rulesForUsersMove tells us if the user has won or not, based on
-  // the computer's move
+  /**
+   * now the rulesForUsersMove object tells us if the user has won or not, based on
+   * the computer's move
+   **/
   if (rulesForUsersMove.beats === computer_move) {
     winner = "user";
   } else if (rulesForUsersMove.beatenBy === computer_move) {
@@ -77,11 +101,11 @@ function play () {
     winner = "draw";
   }
 
-  console.log("winner: " + winner);
-
   /**
-   *  Now that we know the winner, we can draw the results on the webpage.
+   *  Now that we know the winner, we can print in the console, and then draw
+   *  the results on the webpage.
    **/
+  console.log("winner: " + winner);
  
   /**
    *  First, lets just write some nice text explaining what happened
@@ -99,8 +123,8 @@ function play () {
   computermove_div.innerHTML = "The computer chose " + computer_move;
 
   /**
-   *  If anything at all, we will definitely reset all of the icons to
-   *  black.
+   *  We will definitely reset all of the icons to black, this will happen
+   *  no matter what.
    **/
 
   $("#rock").velocity({
@@ -114,7 +138,8 @@ function play () {
   });
 
   /**
-   * If it was a draw, we are done!
+   * If it was a draw, we are done!  We just set all the icons to black
+   * and that's it!
    **/
   if (winner === "draw") {
     // return just stops the `play` function.  Nothing below will run.
@@ -122,12 +147,16 @@ function play () {
   }
 
   /**
-   *  If we got here, the user won or lost, lets do some animations to 
-   *  show them.
+   *  If we got here, the user won or lost, lets do some animations.
    **/
 
   /**
-   * Now get the icon represents the user's choice using jQuery.
+   * Now get the icon represents the user's choice using jQuery.  Note if
+   * the user_move was "scissors", this jQuery selector will be:
+   * 
+   *    $("#scissors")
+   *
+   * which will get the scissors svg element from the HTML.
    **/
   var user_move_icon = $("#" + user_move);
   
@@ -150,4 +179,8 @@ function play () {
       fillRed: 255
     });
   }
+
+  /**
+   *  And we're done!
+   **/
 }
