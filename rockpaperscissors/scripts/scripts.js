@@ -60,7 +60,10 @@ function play () {
    * their move.  Lets use jQuery to select the element, then call the "val"
    * method to get the current value of the text box.  The `toLowerCase` just
    * converts the string to lower case, in case the user typed any uppercase
-   * characters.
+   * characters.  For more info on jQuery selectors, check out the
+   * "Using jQuery Core" section of the jQuery Learning Center:
+   *
+   *    http://learn.jquery.com/using-jquery-core/
    **/
   var user_move = $("#user-input").val().toLowerCase();
  
@@ -106,19 +109,21 @@ function play () {
   console.log("winner: " + winner);
  
   /**
-   *  First, lets just write some nice text explaining what happened
+   *  First, lets just write some nice text explaining what happened.  First
+   *  we get the div with id="outcome" then we put text inside it, using the
+   *  `html` method.
    **/ 
-  var outcome_div = document.getElementById("outcome");
+  var outcome_div = $("#outcome");
   if (winner === "user") {
-    outcome_div.innerHTML = "The user wins!";
+    outcome_div.html("The user wins!");
   } else if (winner === "computer") {
-    outcome_div.innerHTML = "The computer wins!";
+    outcome_div.html("The computer wins!");
   } else {
-    outcome_div.innerHTML = "It was a draw!";
+    outcome_div.html("It was a draw!");
   }
 
-  var computermove_div = document.getElementById("computermove");
-  computermove_div.innerHTML = "The computer chose " + computer_move;
+  var computermove_div = $("#computermove");
+  computermove_div.html("The computer chose " + computer_move);
 
   /**
    *  We will definitely reset all of the icons to black, this will happen
