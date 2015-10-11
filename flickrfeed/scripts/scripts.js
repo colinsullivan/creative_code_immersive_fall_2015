@@ -30,7 +30,7 @@ $(document).ready(function () {
      * cat photos, and the response formatted in JSON.  For more info on these
      * parameters, see the flickr documentation:
      * 
-     *    https: *www.flickr.com/services/feeds/docs/photos_public/
+     *    https://www.flickr.com/services/feeds/docs/photos_public/
      **/
     {
       tags: "cats",
@@ -71,7 +71,7 @@ $(document).ready(function () {
        * to using simple strings.  For more info on this, check out the 
        * "Using jQuery Core" section of the jQuery learning center:
        *
-       *    http: *learn.jquery.com/using-jquery-core/
+       *    http://learn.jquery.com/using-jquery-core/
        *
        * This syntax means, create an <a> element, and set its `href` attribute
        * equal to `item.link`.
