@@ -1,0 +1,15 @@
+{
+  "name": "googlespreadsheet_example",
+  "version": "0.0.1",
+  "description": "An example of how to use google spreadsheets in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Colin Sullivan <colin@colin-sullivan.net>",
+  "license": "MIT",
+  "dependencies": {
+    "google-spreadsheet": "^1.0.1",
+    "googleapis": "^2.1.6"
+  }
+}
