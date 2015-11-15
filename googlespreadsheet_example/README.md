@@ -11,6 +11,7 @@ This example demonstrates how to connect to a google spreadsheet from a Node.js 
 
 **Running the Script**
 
+    $ npm install
     $ node index.js
 
 Should successfully connect to your spreadsheet and print the rows in it.
